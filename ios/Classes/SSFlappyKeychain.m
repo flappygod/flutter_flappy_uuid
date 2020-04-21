@@ -8,15 +8,15 @@
 
 #import "SSFlappyKeychain.h"
 
-NSString *const kSSKeychainErrorDomain = @"com.samsoffes.sskeychain";
+NSString *const FlappykSSKeychainErrorDomain = @"com.samsoffes.sskeychain";
 
-NSString *const kSSKeychainAccountKey = @"acct";
-NSString *const kSSKeychainCreatedAtKey = @"cdat";
-NSString *const kSSKeychainClassKey = @"labl";
-NSString *const kSSKeychainDescriptionKey = @"desc";
-NSString *const kSSKeychainLabelKey = @"labl";
-NSString *const kSSKeychainLastModifiedKey = @"mdat";
-NSString *const kSSKeychainWhereKey = @"svce";
+NSString *const FlappykSSKeychainAccountKey = @"acct";
+NSString *const FlappykSSKeychainCreatedAtKey = @"cdat";
+NSString *const FlappykSSKeychainClassKey = @"labl";
+NSString *const FlappykSSKeychainDescriptionKey = @"desc";
+NSString *const FlappykSSKeychainLabelKey = @"labl";
+NSString *const FlappykSSKeychainLastModifiedKey = @"mdat";
+NSString *const FlappykSSKeychainWhereKey = @"svce";
 
 #if __IPHONE_4_0 && TARGET_OS_IPHONE  
 CFTypeRef SSKeychainAccessibilityType = NULL;
@@ -46,7 +46,7 @@ CFTypeRef SSKeychainAccessibilityType = NULL;
 
 
 + (NSArray *)accountsForService:(NSString *)service error:(NSError **)error {
-    OSStatus status = SSKeychainErrorBadArguments;
+    OSStatus status = FlappySSKeychainErrorBadArguments;
     NSMutableDictionary *query = [self _queryForService:service account:nil];
 #if __has_feature(objc_arc)
 	[query setObject:(__bridge id)kCFBooleanTrue forKey:(__bridge id)kSecReturnAttributes];
@@ -63,7 +63,7 @@ CFTypeRef SSKeychainAccessibilityType = NULL;
 	status = SecItemCopyMatching((CFDictionaryRef)query, &result);
 #endif
     if (status != noErr && error != NULL) {
-		*error = [NSError errorWithDomain:kSSKeychainErrorDomain code:status userInfo:nil];
+		*error = [NSError errorWithDomain:FlappykSSKeychainErrorDomain code:status userInfo:nil];
 		return nil;
 	}
 	
@@ -102,10 +102,10 @@ CFTypeRef SSKeychainAccessibilityType = NULL;
 
 
 + (NSData *)passwordDataForService:(NSString *)service account:(NSString *)account error:(NSError **)error {
-    OSStatus status = SSKeychainErrorBadArguments;
+    OSStatus status = FlappySSKeychainErrorBadArguments;
 	if (!service || !account) {
 		if (error) {
-			*error = [NSError errorWithDomain:kSSKeychainErrorDomain code:status userInfo:nil];
+			*error = [NSError errorWithDomain:FlappykSSKeychainErrorDomain code:status userInfo:nil];
 		}
 		return nil;
 	}
@@ -123,7 +123,7 @@ CFTypeRef SSKeychainAccessibilityType = NULL;
 #endif
 	
 	if (status != noErr && error != NULL) {
-		*error = [NSError errorWithDomain:kSSKeychainErrorDomain code:status userInfo:nil];
+		*error = [NSError errorWithDomain:FlappykSSKeychainErrorDomain code:status userInfo:nil];
 		return nil;
 	}
 	
@@ -143,7 +143,7 @@ CFTypeRef SSKeychainAccessibilityType = NULL;
 
 
 + (BOOL)deletePasswordForService:(NSString *)service account:(NSString *)account error:(NSError **)error {
-	OSStatus status = SSKeychainErrorBadArguments;
+	OSStatus status = FlappySSKeychainErrorBadArguments;
 	if (service && account) {
 		NSMutableDictionary *query = [self _queryForService:service account:account];
 #if __has_feature(objc_arc)
@@ -153,7 +153,7 @@ CFTypeRef SSKeychainAccessibilityType = NULL;
 #endif
 	}
 	if (status != noErr && error != NULL) {
-		*error = [NSError errorWithDomain:kSSKeychainErrorDomain code:status userInfo:nil];
+		*error = [NSError errorWithDomain:FlappykSSKeychainErrorDomain code:status userInfo:nil];
 	}
 	return (status == noErr);
     
@@ -179,7 +179,7 @@ CFTypeRef SSKeychainAccessibilityType = NULL;
 
 
 + (BOOL)setPasswordData:(NSData *)password forService:(NSString *)service account:(NSString *)account error:(NSError **)error {
-    OSStatus status = SSKeychainErrorBadArguments;
+    OSStatus status = FlappySSKeychainErrorBadArguments;
 	if (password && service && account) {
         [self deletePasswordForService:service account:account];
         NSMutableDictionary *query = [self _queryForService:service account:account];
@@ -206,7 +206,7 @@ CFTypeRef SSKeychainAccessibilityType = NULL;
 #endif
 	}
 	if (status != noErr && error != NULL) {
-		*error = [NSError errorWithDomain:kSSKeychainErrorDomain code:status userInfo:nil];
+		*error = [NSError errorWithDomain:FlappykSSKeychainErrorDomain code:status userInfo:nil];
 	}
 	return (status == noErr);
 }

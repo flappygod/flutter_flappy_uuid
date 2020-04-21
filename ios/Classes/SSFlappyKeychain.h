@@ -12,68 +12,68 @@
 /** Error codes that can be returned in NSError objects. */
 typedef enum {
 	/** No error. */
-	SSKeychainErrorNone = noErr,
+	FlappySSKeychainErrorNone = noErr,
 	
 	/** Some of the arguments were invalid. */
-	SSKeychainErrorBadArguments = -1001,
+	FlappySSKeychainErrorBadArguments = -1001,
 	
 	/** There was no password. */
-	SSKeychainErrorNoPassword = -1002,
+	FlappySSKeychainErrorNoPassword = -1002,
 	
 	/** One or more parameters passed internally were not valid. */
-	SSKeychainErrorInvalidParameter = errSecParam,
+	FlappySSKeychainErrorInvalidParameter = errSecParam,
 	
 	/** Failed to allocate memory. */
-	SSKeychainErrorFailedToAllocated = errSecAllocate,
+	FlappySSKeychainErrorFailedToAllocated = errSecAllocate,
 	
 	/** No trust results are available. */
-	SSKeychainErrorNotAvailable = errSecNotAvailable,
+	FlappySSKeychainErrorNotAvailable = errSecNotAvailable,
 	
 	/** Authorization/Authentication failed. */
-	SSKeychainErrorAuthorizationFailed = errSecAuthFailed,
+	FlappySSKeychainErrorAuthorizationFailed = errSecAuthFailed,
 	
 	/** The item already exists. */
-	SSKeychainErrorDuplicatedItem = errSecDuplicateItem,
+	FlappySSKeychainErrorDuplicatedItem = errSecDuplicateItem,
 	
 	/** The item cannot be found.*/
-	SSKeychainErrorNotFound = errSecItemNotFound,
+	FlappySSKeychainErrorNotFound = errSecItemNotFound,
 	
 	/** Interaction with the Security Server is not allowed. */
-	SSKeychainErrorInteractionNotAllowed = errSecInteractionNotAllowed,
+	FlappySSKeychainErrorInteractionNotAllowed = errSecInteractionNotAllowed,
 	
 	/** Unable to decode the provided data. */
-	SSKeychainErrorFailedToDecode = errSecDecode
-} SSKeychainErrorCode;
+	FlappySSKeychainErrorFailedToDecode = errSecDecode
+} FlappySSKeychainErrorCode;
 
-extern NSString *const kSSKeychainErrorDomain;
+extern NSString *const FlappykSSKeychainErrorDomain;
 
 /** Account name. */
-extern NSString *const kSSKeychainAccountKey;
+extern NSString *const FlappykSSKeychainAccountKey;
 
 /**
  Time the item was created.
  
  The value will be a string.
  */
-extern NSString *const kSSKeychainCreatedAtKey;
+extern NSString *const FlappykSSKeychainCreatedAtKey;
 
 /** Item class. */
-extern NSString *const kSSKeychainClassKey;
+extern NSString *const FlappykSSKeychainClassKey;
 
 /** Item description. */
-extern NSString *const kSSKeychainDescriptionKey;
+extern NSString *const FlappykSSKeychainDescriptionKey;
 
 /** Item label. */
-extern NSString *const kSSKeychainLabelKey;
+extern NSString *const FlappykSSKeychainLabelKey;
 
 /** Time the item was last modified.
  
  The value will be a string.
  */
-extern NSString *const kSSKeychainLastModifiedKey;
+extern NSString *const FlappykSSKeychainLastModifiedKey;
 
 /** Where the item was created. */
-extern NSString *const kSSKeychainWhereKey;
+extern NSString *const FlappykSSKeychainWhereKey;
 
 /**
  Simple wrapper for accessing accounts, getting passwords, setting passwords, and deleting passwords using the system
