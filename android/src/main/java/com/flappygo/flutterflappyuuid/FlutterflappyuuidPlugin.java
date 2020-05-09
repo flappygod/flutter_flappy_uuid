@@ -28,8 +28,8 @@ public class FlutterflappyuuidPlugin implements FlutterPlugin, MethodCallHandler
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
         channel = new MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutterflappyuuid");
+        context = flutterPluginBinding.getApplicationContext();
         channel.setMethodCallHandler(this);
-        this.context = flutterPluginBinding.getApplicationContext();
     }
 
     // This static function is optional and equivalent to onAttachedToEngine. It supports the old
