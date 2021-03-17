@@ -9,8 +9,8 @@ class Flutterflappyuuid {
       const MethodChannel('flutterflappyuuid');
 
   //获取UUID
-  static Future<String> getUUID() async {
-    final String version = await _channel.invokeMethod('getUUID');
+  static Future<String?> getUUID() async {
+    final String? version = await _channel.invokeMethod('getUUID');
     return version;
   }
 
