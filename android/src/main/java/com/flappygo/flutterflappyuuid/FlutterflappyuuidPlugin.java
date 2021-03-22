@@ -27,7 +27,7 @@ public class FlutterflappyuuidPlugin implements FlutterPlugin, MethodCallHandler
 
     @Override
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-        channel = new MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutterflappyuuid");
+        channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "flutterflappyuuid");
         context = flutterPluginBinding.getApplicationContext();
         channel.setMethodCallHandler(this);
     }
@@ -42,10 +42,13 @@ public class FlutterflappyuuidPlugin implements FlutterPlugin, MethodCallHandler
     // depending on the user's project. onAttachedToEngine or registerWith must both be defined
     // in the same class.
     public static void registerWith(Registrar registrar) {
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutterflappyuuid");
         FlutterflappyuuidPlugin plugin = new FlutterflappyuuidPlugin();
+        //设置channel
+        plugin.channel = new MethodChannel(registrar.messenger(), "flutterflappyuuid");
+        //上下文
         plugin.context = registrar.activity().getApplicationContext();
-        channel.setMethodCallHandler(plugin);
+        //设置handler
+        plugin.channel.setMethodCallHandler(plugin);
     }
 
     @Override
