@@ -61,7 +61,7 @@ public class FlutterflappyuuidPlugin implements FlutterPlugin, MethodCallHandler
                 }
                 //当前的UUID是空的
                 else {
-                    uuid = DeviceIdUtil.getDeviceUUID(context);
+                    uuid = DeviceIdUtil.getUniqueID(context);
                     result.success(uuid);
                 }
             } catch (Exception ex) {

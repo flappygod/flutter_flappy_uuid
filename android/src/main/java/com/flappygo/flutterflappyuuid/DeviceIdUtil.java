@@ -22,12 +22,31 @@ public class DeviceIdUtil {
     public final static String UUID_KEY = "com.chuangyou.flutter_chuangyou_lib.UUIDKEY";
 
 
-    public static String getDeviceUUID(Context context) {
+    //get device unique id 
+    public static String getUniqueID(Context context) {
+        //get uuid saved
+        String UUID = getUUID(context);
+        //if uuid is null
+        if (UUID == null) {
+            //get android id
+            String androidID = getAndroidID(context);
+            //if android id is null,generate one 
+            UUID = (androidID == null ? UUIDTool.getUUID() : androidID);
+            //save the uuid 
+            saveUUID(context, UUID);
+        }
+        //return 
+        return UUID;
+    }
+
+
+    //get android ID
+    public static String getAndroidID(Context context) {
         try {
-            //首先获取androidID
+            //get android id 
             String ANDROID_ID = Settings.System.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
             String fingerprint = FINGERPRINT;
-            //获取到十六位的androidID
+            //get android id 
             if (ANDROID_ID != null && ANDROID_ID.length() == 16 && fingerprint != null) {
                 String strOne = ANDROID_ID.toUpperCase();
                 String strTwo = MD5.MD5Encode(fingerprint).substring(8, 24).toUpperCase();
@@ -45,43 +64,22 @@ public class DeviceIdUtil {
         } catch (Exception ex) {
 
         }
-        return getUnicID(context);
+        return null;
     }
 
 
-    /*********
-     * 获取唯一ID
-     * @return
-     */
-    private static String getUnicID(Context context) {
-        //获取UUID
-        String UUID = getUUID(context);
-        //假如保存的UUID不存在
-        if (UUID == null) {
-            //创建新的UUID
-            UUID = UUIDTool.getUUID();
-            //保存UUID
-            saveUUID(context, UUID);
-        }
-        //平板ID
-        return UUID;
-    }
-
-    /******************
-     * 获取平板的唯一标识码
-     * @return
-     * @param context
-     */
+    //get saved uuid 
     private static String getUUID(Context context) {
+        //get SharedPreferences first
         SharedPreferences mSharedPreferences = context.getSharedPreferences(PREFERENCENAME, Context.MODE_PRIVATE);
-        //获取到设置信息
+        //if SharedPreferences is null
         String UUID = mSharedPreferences.getString(UUID_KEY, null);
-        //获取文件中的
+        //get it from file
         if (UUID == null) {
-            //外部地址
+            //file path
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_ALARMS).getPath() + "/";
             //读取外部地址
-            UUID = SDcardTool.readFileSdcard(path, "UUID.txt");
+            UUID = SDcardTool.readFileSdcard(path, "FlappyUI_D.txt");
             //如果不为空则保存
             if (UUID != null) {
                 saveUUID(context, UUID);
@@ -90,15 +88,8 @@ public class DeviceIdUtil {
         return UUID;
     }
 
-    /*****************
-     * 保存平板的唯一标识码
-     * @param uuid  uuid
-     * @return
-     */
+    //save uuid
     private static void saveUUID(Context context, String uuid) {
-        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_ALARMS).getPath() + "/";
-        //向文件夹写入文件数据
-        SDcardTool.writeFileSdcard(path, "UUID.txt", uuid);
         //创建首选项
         SharedPreferences mSharedPreferences = context.getSharedPreferences(PREFERENCENAME, Context.MODE_PRIVATE);
         //创建editor
@@ -107,5 +98,9 @@ public class DeviceIdUtil {
         editor.putString(UUID_KEY, uuid);
         //提交修改
         editor.commit();
+        //save to path
+        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_ALARMS).getPath() + "/";
+        //向文件夹写入文件数据
+        SDcardTool.writeFileSdcard(path, "FlappyUI_D.txt", uuid);
     }
 }
