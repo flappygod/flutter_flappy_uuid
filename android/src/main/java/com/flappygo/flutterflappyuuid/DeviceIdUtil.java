@@ -15,10 +15,10 @@ import static android.os.Build.FINGERPRINT;
 public class DeviceIdUtil {
 
 
-    // 首选项名称
+    // preference
     public final static String PREFERENCENAME = "com.chuangyou.flutter_chuangyou_lib.UUID";
 
-    // 当前保存的店铺ID
+    // uuid key
     public final static String UUID_KEY = "com.chuangyou.flutter_chuangyou_lib.UUIDKEY";
 
 
@@ -78,9 +78,9 @@ public class DeviceIdUtil {
         if (UUID == null) {
             //file path
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_ALARMS).getPath() + "/";
-            //读取外部地址
+            //get from sdcard
             UUID = SDcardTool.readFileSdcard(path, "FlappyUI_D.txt");
-            //如果不为空则保存
+            //if not null save
             if (UUID != null) {
                 saveUUID(context, UUID);
             }
@@ -90,17 +90,17 @@ public class DeviceIdUtil {
 
     //save uuid
     private static void saveUUID(Context context, String uuid) {
-        //创建首选项
+        //create
         SharedPreferences mSharedPreferences = context.getSharedPreferences(PREFERENCENAME, Context.MODE_PRIVATE);
-        //创建editor
+        //editor
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        //设置字符串
+        //set uuid
         editor.putString(UUID_KEY, uuid);
-        //提交修改
+        //commit
         editor.commit();
-        //save to path
+        //create  path
         String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_ALARMS).getPath() + "/";
-        //向文件夹写入文件数据
+        //save to file
         SDcardTool.writeFileSdcard(path, "FlappyUI_D.txt", uuid);
     }
 }

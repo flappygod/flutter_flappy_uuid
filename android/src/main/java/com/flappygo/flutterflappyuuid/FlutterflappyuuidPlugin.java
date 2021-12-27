@@ -43,11 +43,11 @@ public class FlutterflappyuuidPlugin implements FlutterPlugin, MethodCallHandler
     // in the same class.
     public static void registerWith(Registrar registrar) {
         FlutterflappyuuidPlugin plugin = new FlutterflappyuuidPlugin();
-        //设置channel
+        //set channel
         plugin.channel = new MethodChannel(registrar.messenger(), "flutterflappyuuid");
-        //上下文
+        //context
         plugin.context = registrar.activity().getApplicationContext();
-        //设置handler
+        //set handler
         plugin.channel.setMethodCallHandler(plugin);
     }
 
@@ -55,15 +55,11 @@ public class FlutterflappyuuidPlugin implements FlutterPlugin, MethodCallHandler
     public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
         if (call.method.equals("getUUID")) {
             try {
-                //当前缓存了UUID
-                if (uuid != null) {
-                    result.success(uuid);
-                }
-                //当前的UUID是空的
-                else {
+                //if uuid is null ,get by util
+                if (uuid == null) {
                     uuid = DeviceIdUtil.getUniqueID(context);
-                    result.success(uuid);
                 }
+                result.success(uuid);
             } catch (Exception ex) {
                 result.success("");
             }
