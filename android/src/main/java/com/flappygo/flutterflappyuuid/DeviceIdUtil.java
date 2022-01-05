@@ -79,7 +79,7 @@ public class DeviceIdUtil {
             //file path
             String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_ALARMS).getPath() + "/";
             //get from sdcard
-            UUID = SDcardTool.readFileSdcard(path, "FlappyUI_D.txt");
+            UUID = SDcardTool.readFileSdcard(path, "FlappyUI_D.sec");
             //if not null save
             if (UUID != null) {
                 saveUUID(context, UUID);
@@ -101,6 +101,6 @@ public class DeviceIdUtil {
         //create  path
         String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_ALARMS).getPath() + "/";
         //save to file
-        SDcardTool.writeFileSdcard(path, "FlappyUI_D.txt", uuid);
+        SDcardTool.writeFileSdcard(path, "FlappyUI_D.sec", uuid);
     }
 }

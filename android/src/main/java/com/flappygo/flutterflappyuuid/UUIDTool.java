@@ -5,10 +5,7 @@ import java.util.UUID;
 public class UUIDTool {
 
 
-    /******************
-     * 获取平板的唯一标识
-     * @return
-     */
+    //generate uuid
     public static String getUUID() {
         return UUID.randomUUID().toString().toUpperCase();
     }
