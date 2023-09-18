@@ -14,7 +14,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 /**
  * FlutterflappyuuidPlugin
  */
-public class FlutterFlappyUuidPlugin implements FlutterPlugin, MethodCallHandler {
+public class FlutterflappyuuidPlugin implements FlutterPlugin, MethodCallHandler {
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -42,7 +42,7 @@ public class FlutterFlappyUuidPlugin implements FlutterPlugin, MethodCallHandler
     // depending on the user's project. onAttachedToEngine or registerWith must both be defined
     // in the same class.
     public static void registerWith(Registrar registrar) {
-        FlutterFlappyUuidPlugin plugin = new FlutterFlappyUuidPlugin();
+        FlutterflappyuuidPlugin plugin = new FlutterflappyuuidPlugin();
         //set channel
         plugin.channel = new MethodChannel(registrar.messenger(), "flutterflappyuuid");
         //context
