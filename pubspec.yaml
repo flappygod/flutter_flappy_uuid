@@ -1,8 +1,7 @@
 name: flutterflappyuuid
-description: A new Flutter plugin.
-version: 0.0.1
-author:
-homepage:
+description: Get UUID for this App, IOS use keychain and android use ANDROID_ID and FINGERPRINT .
+version: 1.0.0
+homepage: https://github.com/flappygod/flutter_flappy_uuid.git
 
 environment:
   sdk: '>=3.0.6 <4.0.0'
