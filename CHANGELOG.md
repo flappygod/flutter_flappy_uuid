@@ -1,3 +1,3 @@
-## 1.0.3
+## 1.0.4
 
-1.Fix a bug in get android id.
+1.Fix a bug in plugin name
