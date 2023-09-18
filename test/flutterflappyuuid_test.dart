@@ -18,6 +18,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await Flutterflappyuuid.getUUID(), '42');
+    expect(await FlutterFlappyUuid.getUUID(), '42');
   });
 }
