@@ -54,15 +54,7 @@ public class FlutterflappyuuidPlugin implements FlutterPlugin, MethodCallHandler
     @Override
     public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
         if (call.method.equals("getUUID")) {
-            try {
-                //if uuid is null ,get by util
-                if (uuid == null) {
-                    uuid = DeviceIdUtil.getUniqueID(context);
-                }
-                result.success(uuid);
-            } catch (Exception ex) {
-                result.success("");
-            }
+            result.success(DeviceIdUtil.getUniqueID(context));
         } else {
             result.notImplemented();
         }

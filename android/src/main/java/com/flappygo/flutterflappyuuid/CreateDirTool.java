@@ -7,21 +7,18 @@ import java.io.File;
 public class CreateDirTool {
 
     //create dir
-    public static void createDir(String DIRPATH) throws Exception {
-
-        File file = new File(DIRPATH);
+    public static void createDir(String dirPath) throws Exception {
+        File file = new File(dirPath);
         synchronized (CreateDirTool.class) {
             if (!file.exists()) {
                 if (!file.mkdirs()) {
-                    Exception e = new Exception(
-                            "createDir failed, no dir or dirpath wrong");
-                    throw e;
+                    throw new Exception("createDir failed, no dir or dirPath wrong");
                 }
             }
         }
-        File nomidia = new File(DIRPATH + ".nomedia");
-        if (!nomidia.exists()) {
-            nomidia.createNewFile();
+        File noMedia = new File(dirPath + ".nomedia");
+        if (!noMedia.exists()) {
+            noMedia.createNewFile();
         }
     }
 
@@ -33,8 +30,8 @@ public class CreateDirTool {
             if (childFiles == null || childFiles.length == 0) {
                 return true;
             }
-            for (int i = 0; i < childFiles.length; i++) {
-                boolean men = deleteFile(childFiles[i]);
+            for (File childFile : childFiles) {
+                boolean men = deleteFile(childFile);
                 if (!men) {
                     b = false;
                 }
@@ -43,7 +40,6 @@ public class CreateDirTool {
             if (!file.delete()) {
                 b = false;
             }
-            file = null;
         }
         return b;
     }
