@@ -1,3 +1,3 @@
-## 1.0.1
+## 1.0.2
 
-1.Formatted
+1.Fix a bug in get android id.

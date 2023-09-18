@@ -1,5 +1,6 @@
 package com.flappygo.flutterflappyuuid;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.content.Context;
@@ -43,7 +44,8 @@ public class DeviceIdUtil {
     //get android ID
     public static String getAndroidID(Context context) {
         try {
-            String ANDROID_ID = Settings.Secure.ANDROID_ID;
+            @SuppressLint("HardwareIds")
+            String ANDROID_ID = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
             String strOne = ANDROID_ID.toUpperCase();
             String strTwo = MD5.MD5Encode(FINGERPRINT).substring(8, 24).toUpperCase();
             String total = strOne + strTwo;
