@@ -1,8 +1,7 @@
+import 'package:flutter_flappy_uuid/flutter_flappy_uuid.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-import 'package:flutter/services.dart';
-import 'package:flutterflappyuuid/flutterflappyuuid.dart';
 
 void main() {
   runApp(MyApp());

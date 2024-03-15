@@ -9,7 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutterflappyuuid:
+  flutter_flappy_uuid:
     # When depending on this package from a real application you should use:
     #   flutterflappyuuid: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints

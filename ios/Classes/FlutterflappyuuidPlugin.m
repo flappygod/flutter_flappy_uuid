@@ -7,7 +7,7 @@
 }
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
     FlutterMethodChannel* channel = [FlutterMethodChannel
-                                     methodChannelWithName:@"flutterflappyuuid"
+                                     methodChannelWithName:@"flutter_flappy_uuid"
                                      binaryMessenger:[registrar messenger]];
     FlutterflappyuuidPlugin* instance = [[FlutterflappyuuidPlugin alloc] init];
     [registrar addMethodCallDelegate:instance channel:channel];

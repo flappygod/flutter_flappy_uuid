@@ -5,7 +5,7 @@ import 'dart:async';
 class FlutterFlappyUuid {
   ///channel
   static const MethodChannel _channel =
-      const MethodChannel('flutterflappyuuid');
+      const MethodChannel('flutter_flappy_uuid');
 
   /// Get UUID for this App, IOS use keychain and android use ANDROID_ID and FINGERPRINT .
   static Future<String?> getUUID() async {

@@ -10,9 +10,9 @@ public class MD5 {
 
 
     public static String byteArrayToHexString(byte[] b) {
-        StringBuffer resultSb = new StringBuffer();
-        for (int i = 0; i < b.length; i++) {
-            resultSb.append(byteToHexString(b[i]));
+        StringBuilder resultSb = new StringBuilder();
+        for (byte value : b) {
+            resultSb.append(byteToHexString(value));
         }
         return resultSb.toString();
     }
@@ -27,15 +27,13 @@ public class MD5 {
     }
 
     public static String MD5Encode(String origin) {
-        String resultString = null;
-
+        String resultString = origin;
         try {
-            resultString = new String(origin);
             MessageDigest md = MessageDigest.getInstance("MD5");
             resultString = byteArrayToHexString(md.digest(resultString.getBytes()));
+            return resultString;
         } catch (Exception ex) {
-
+            return resultString;
         }
-        return resultString;
     }
 }
