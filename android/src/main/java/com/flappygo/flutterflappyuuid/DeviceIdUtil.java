@@ -73,7 +73,7 @@ public class DeviceIdUtil {
     }
 
     //get UUID from External Directory
-    private static String getUUIDFromDirectories(Activity activity) {
+    private static String getUUIDFromDirectories() {
         String path;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
             path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).getPath() + "/";
@@ -131,7 +131,7 @@ public class DeviceIdUtil {
                 return oneStep;
             }
             //get from External Directory
-            String stepTwo = getUUIDFromDirectories(activity);
+            String stepTwo = getUUIDFromDirectories();
             if (stepTwo != null) {
                 saveUUIDSharedPreferences(activity, stepTwo);
                 return stepTwo;
@@ -149,7 +149,7 @@ public class DeviceIdUtil {
 
     public static final int REQUEST_EXTERNAL_STORAGE = 1;
 
-    private static String[] PERMISSIONS_STORAGE = {
+    private static final String[] PERMISSIONS_STORAGE = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.READ_PHONE_STATE,
