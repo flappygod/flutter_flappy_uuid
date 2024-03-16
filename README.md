@@ -4,7 +4,8 @@ A new Flutter plugin.
 
 ## Getting Started
 
-Flutterflappyuuid.getUUID();
+Use flutter_cached_uuid instead
+
 
 
 This project is a starting point for a Flutter
